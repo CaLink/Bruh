@@ -8,14 +8,15 @@ page = requests.get(url)
 text = page.text
 soup = BeautifulSoup(text)
 
-table = soup.find('table', {'class':'wikitable sortable'})
+table = soup.find_all('table', {'class':'wikitable sortable'})
 
-line = table.find('tbody')
+line = table[2].find('tbody')
 lines = []
 column = []
+
 for t in line.find_all('tr'):
     tLine = []
-       
+      
 
     for j in t.find_all('td'):
         if j.find_all('a'):
